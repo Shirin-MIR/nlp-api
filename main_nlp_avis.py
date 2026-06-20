@@ -22,27 +22,36 @@ def home():
     <!DOCTYPE html>
     <html>
     <head>
+    <style>
+    <head>
+    <title>Analyse Reddit NLP</title>
+
+    <style>
     button{
-    background:#ff4500;
-    color:white;
-    border:none;
-    padding:12px 25px;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:18px;
-}
+        background:#ff4500;
+        color:white;
+        border:none;
+        padding:12px 25px;
+        border-radius:8px;
+        cursor:pointer;
+        font-size:18px;
+    }
 
-button:hover{
-    background:#e03d00;
-}
+    button:hover{
+        background:#e03d00;
+    }
 
-#resultat{
-    margin-top:20px;
-    font-size:30px;
-    font-weight:bold;
-}
+    #resultat{
+        margin-top:20px;
+        font-size:30px;
+        font-weight:bold;
+    }
 
-</style>
+    </style>
+
+</head>
+
+    </style>
         <title>Analyse Reddit NLP</title>
     </head>
     <body>
@@ -88,6 +97,8 @@ def predict(data: TextInput):
     X = vectorizer.transform([data.text])
     prediction = model.predict(X)[0]
 
+    sentiment = "😊 Positif" if prediction == 1 else "😞 Négatif"
+    
     return {
         "text": data.text,
         "prediction": int(prediction)
