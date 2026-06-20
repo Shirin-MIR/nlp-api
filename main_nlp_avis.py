@@ -22,8 +22,6 @@ def home():
     <!DOCTYPE html>
     <html>
     <head>
-    <style>
-    <head>
     <title>Analyse Reddit NLP</title>
 
     <style>
@@ -46,14 +44,8 @@ def home():
         font-size:30px;
         font-weight:bold;
     }
-
     </style>
-
 </head>
-
-    </style>
-        <title>Analyse Reddit NLP</title>
-    </head>
     <body>
         <h1>Analyse des sentiments Reddit</h1>
 
@@ -98,10 +90,12 @@ def predict(data: TextInput):
     prediction = model.predict(X)[0]
 
     sentiment = "😊 Positif" if prediction == 1 else "😞 Négatif"
-    
+
     return {
         "text": data.text,
-        "prediction": int(prediction)
+
+
+        "sentiment": sentiment
     }
 if __name__ == "__main__":
     import uvicorn
