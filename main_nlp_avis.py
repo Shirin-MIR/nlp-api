@@ -17,7 +17,49 @@ class TextInput(BaseModel):
 
 @app.get("/")
 def home():
-    return {"message": "API NLP OK"}
+    return """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Analyse Reddit NLP</title>
+    </head>
+    <body>
+        <h1>Analyse des sentiments Reddit</h1>
+
+        <textarea id="text" rows="5" cols="60"></textarea>
+        <br><br>
+
+        <button onclick="analyse()">Analyser</button>
+
+        <h2 id="resultat"></h2>
+
+        <script>
+        async function analyse() {
+
+            const texte =
+                document.getElementById("text").value;
+
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    text: texte
+                })
+            });
+
+            const data = await response.json();
+
+            document.getElementById("resultat")
+                .innerHTML =
+                "Prédiction : " + data.prediction;
+        }
+        </script>
+
+    </body>
+    </html>
+    """
 
 
 @app.post("/predict")
