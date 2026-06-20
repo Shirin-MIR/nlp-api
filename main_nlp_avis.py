@@ -22,6 +22,27 @@ def home():
     <!DOCTYPE html>
     <html>
     <head>
+    button{
+    background:#ff4500;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+button:hover{
+    background:#e03d00;
+}
+
+#resultat{
+    margin-top:20px;
+    font-size:30px;
+    font-weight:bold;
+}
+
+</style>
         <title>Analyse Reddit NLP</title>
     </head>
     <body>
@@ -53,8 +74,7 @@ def home():
             const data = await response.json();
 
             document.getElementById("resultat")
-                .innerHTML =
-                "Prédiction : " + data.prediction;
+                .innerHTML = data.sentiment;
         }
         </script>
 
